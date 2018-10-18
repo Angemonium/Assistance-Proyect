@@ -43,7 +43,7 @@ namespace Calculator.Controllers
                         Console.WriteLine("No es un formato soportado");
                     }
                     break;
-                    break;
+                   
 
                 case "*":
                     try
@@ -55,7 +55,7 @@ namespace Calculator.Controllers
                         Console.WriteLine("No es un formato soportado");
                     }
                     break;
-                    break;
+                    
 
                 case "/":
                     try
