@@ -15,7 +15,7 @@ namespace Calculator.Controllers
             return View();
         }
 
-        public ActionResult index(int res)
+        public ActionResult oper(int res)
         {
             int val1 = int.Parse(Request.Form["val1"].ToString());
             int val2 = int.Parse(Request.Form["val2"].ToString());
