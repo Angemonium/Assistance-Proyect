@@ -10,11 +10,20 @@ namespace Calculator.Controllers
     public class CalcController : Controller
     {
         // GET: Calc
+        [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            CalcViewModel model = new CalcViewModel()
+            {
+                NumberA = 1,
+                NumberB = 1,
+                Operator = Operator.Add
+            };
+
+            return View(model);
         }
 
+        [HttpPost]
         public ActionResult oper(int res)
         {
             int val1 = int.Parse(Request.Form["val1"].ToString());

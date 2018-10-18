@@ -1,7 +1,4 @@
-﻿
-@{
-    Layout = null;
-}
+﻿@model Calculator.Models.CalcViewModel
 
 <!DOCTYPE html>
 
@@ -12,6 +9,9 @@
 </head>
 <body>
     <div> 
+        @using (Html.BeginForm("", ))
+        {
+        }
         <from method="post" actions="/Home/oper">
             Introduzca su operación : <input type="text" id="val1"><input type"text" id="oper" size="1" ><input type="text" id="val2">
             <br>
