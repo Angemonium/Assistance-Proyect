@@ -54,7 +54,7 @@ namespace Assistance_Proyect.Tests.Controllers
 
         [TestMethod]
         public void Calculator()
-        {
+        { 
             CalcViewModel data = new CalcViewModel();
             HomeController c = new HomeController();
             data.NumberA = 2;

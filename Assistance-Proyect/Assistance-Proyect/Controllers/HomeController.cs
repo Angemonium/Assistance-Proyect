@@ -1,5 +1,4 @@
-﻿using Assistance_Proyect.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -29,10 +28,26 @@ namespace Assistance_Proyect.Controllers
             return View();
         }
 
-        
+        public class CalcViewModel
+        {
+            [Display(Name = "Number A")]
+            public int NumberA { get; set; }
 
+            [Display(Name = "Number B")]
+            public int NumberB { get; set; }
 
-      
+            public Operator Operator { get; set; }
+
+            public int? Result { get; set; }
+        }
+
+        public enum Operator
+        {
+            Divide = 0,
+            Multiply = 1,
+            Add = 2,
+            Substract = 3
+        }
 
         [HttpGet]
         public ActionResult Calculator()
@@ -57,24 +72,17 @@ namespace Assistance_Proyect.Controllers
           switch (z)
             {
                 case Operator.Add:
-                    data.Result = (x + y);
+                    data.Result = x + y;
                     break;
                 case Operator.Substract:
-                    data.Result = (x - y);
+                    data.Result = x - y;
                     break;
                 case Operator.Multiply:
-                    data.Result = (x * y);
+                    data.Result = x * y;
                     break;
                 case Operator.Divide:
-                    try { 
-                        data.Result = x / y;
-                        break;
-                        }
-                    catch(DivideByZeroException)
-                    {
-                        data.Result = 0;
-                        break;
-                    }
+                    data.Result = x / y;
+                    break;
             }
             return View("Calculator", data);
         }

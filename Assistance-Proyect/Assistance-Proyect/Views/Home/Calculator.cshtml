@@ -1,4 +1,4 @@
-﻿@model Assistance_Proyect.ViewModels.CalcViewModel
+﻿@model  Assistance_Proyect.Controllers.HomeController.CalcViewModel
 
 @{
     ViewBag.Title = "Home Page";
@@ -7,43 +7,30 @@
 @using (Html.BeginForm("Calculator", "Home", FormMethod.Post))
 {
     <div class="form-horizontal">
-        <div class="form-group">
-            <p>Input your operation :</p>
-        </div>
-        <div class="form-group">
-            <div class="col-md-4">
-                @Html.TextBoxFor(model => model.NumberA, new { @class = "form-control" })
+        <p>Input your operation :</p>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.NumberA, new { @class = "form-control" })
 
-                @Html.ValidationMessageFor(model => model.NumberA, "", new { @class = "text-danger" })<br />
-            </div>
-            <div class="col-md-4">
-                @Html.EnumDropDownListFor(model => model.Operator, new { @class = "form-control" })
-            </div>
-            <div class="col-md-4">
-                @Html.TextBoxFor(model => model.NumberB, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.NumberB, "", new { @class = "text-danger" })
-            </div>
+            @Html.ValidationMessageFor(model => model.NumberA, "", new { @class = "text-danger" })
         </div>
-        <div class="form-group">
-            @if (Model.Result.HasValue)
-            {
-                <div class="col-md-4 col-md-offset-4">
-                    <p class="result">The result is: @Model.Result.Value</p>
-                </div>
-            }
+        <div class="col-md-4",>
+            @Html.EnumDropDownListFor(model => model.Operator)
         </div>
-        <div class="form-group">
-            <br>
-            <label id="label1"></label>
-            <input type="submit" class="btn btn-info" value="Calculate" />
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.NumberB, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.NumberB, "", new { @class = "text-danger" })
+          
         </div>
-        
 
-       
-
+        @if (Model.Result.HasValue)
+        {
+            <p style="text-align:center">The result is: @Model.Result.Value</p>
+        }
 
         @*Input your operation : <input class="form-control" type="text" id="NumberA" name="NumberA"><input type"text" id="oper" size="1"><input type="text" id="val2">*@
-        
+        <br>
+        <label id="label1"></label>
+        <input type="submit" style="float:left" class="btn btn-info" value="Calculate" />
     </div>
 }
 
@@ -53,13 +40,3 @@
     <label id="label1"></label>
     <input type="submit" value="Resultado" />
 </from>*@
-
-@section Styles
-{
-    @Styles.Render("~/Content/calculator.css")
-}
-
-@section Scripts
-{
-    @Scripts.Render("~/Scripts/calculator.js")
-}
