@@ -1,4 +1,4 @@
-﻿@model  Assistance_Proyect.Controllers.HomeController.CalcViewModel
+﻿@model Assistance_Proyect.ViewModels.CalcViewModel
 
 @{
     ViewBag.Title = "Home Page";
@@ -11,10 +11,10 @@
         <div class="col-md-4">
             @Html.TextBoxFor(model => model.NumberA, new { @class = "form-control" })
 
-            @Html.ValidationMessageFor(model => model.NumberA, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.NumberA, "", new { @class = "text-danger" })<br />
         </div>
         <div class="col-md-4">
-            @Html.EnumDropDownListFor(model => model.Operator)
+            @Html.EnumDropDownListFor(model => model.Operator, new { @class = "form-control" })
         </div>
         <div class="col-md-4">
             @Html.TextBoxFor(model => model.NumberB, new { @class = "form-control" })
@@ -25,6 +25,7 @@
         {
             <p style="text-align:center">The result is: @Model.Result.Value</p>
         }
+
 
         @*Input your operation : <input class="form-control" type="text" id="NumberA" name="NumberA"><input type"text" id="oper" size="1"><input type="text" id="val2">*@
         <br>

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Assistance_Proyect;
 using Assistance_Proyect.Controllers;
+using Assistance_Proyect.ViewModels;
 
 namespace Assistance_Proyect.Tests.Controllers
 {
@@ -52,15 +53,16 @@ namespace Assistance_Proyect.Tests.Controllers
         }
 
         [TestMethod]
-        public void CalcViewSumaTest(HomeController.CalcViewModel data)
+        public void Calculator()
         {
+            CalcViewModel data = new CalcViewModel();
             HomeController c = new HomeController();
-            data.NumberA = 5;
-            data.NumberB = 8;
-            var res = data.Result;
-
-            Assert.AreEqual(13, res);
-            
+            data.NumberA = 2;
+            data.NumberB = 2;
+            data.Operator = Operator.Add;
+            ViewResult result = c.Calculator(data) as ViewResult;
+            var VmResult = result.Model as CalcViewModel;
+            Assert.AreEqual(4, VmResult.Result);
         }
     }
 }
