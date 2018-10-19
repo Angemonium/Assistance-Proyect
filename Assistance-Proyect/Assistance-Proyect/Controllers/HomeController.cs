@@ -54,7 +54,7 @@ namespace Assistance_Proyect.Controllers
         {
             CalcViewModel model = new CalcViewModel()
             {
-                NumberA = 1,
+                NumberA = 5,
                 NumberB = 1,
                 Operator = Operator.Add
             };
@@ -66,11 +66,24 @@ namespace Assistance_Proyect.Controllers
         public ActionResult Calculator(CalcViewModel data)
         {
             // Do the operation
-            var x = data;
-
-
-            data.Result = 10;
-
+            var x = data.NumberA;
+            var y = data.NumberB;
+            var z = data.Operator;
+          switch (z)
+            {
+                case Operator.Add:
+                    data.Result = x + y;
+                    break;
+                case Operator.Substract:
+                    data.Result = x - y;
+                    break;
+                case Operator.Multiply:
+                    data.Result = x * y;
+                    break;
+                case Operator.Divide:
+                    data.Result = x / y;
+                    break;
+            }
             return View("Calculator", data);
         }
     }

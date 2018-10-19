@@ -9,9 +9,7 @@
     <div class="form-horizontal">
         <p>Input your operation :</p>
         <div class="col-md-4">
-            @*@Html.TextBoxFor(model => model.NumberA, new { @class = "form-control" })*@
-
-            <input  type="text" name="NumberA" id="NumberA" class="form-control"/>
+            @Html.TextBoxFor(model => model.NumberA, new { @class = "form-control" })
 
             @Html.ValidationMessageFor(model => model.NumberA, "", new { @class = "text-danger" })
         </div>
@@ -19,19 +17,19 @@
             @Html.EnumDropDownListFor(model => model.Operator)
         </div>
         <div class="col-md-4">
-            @Html.EditorFor(model => model.NumberB)
+            @Html.TextBoxFor(model => model.NumberB, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.NumberB, "", new { @class = "text-danger" })
         </div>
 
         @if (Model.Result.HasValue)
         {
-            <p>The result is: @Model.Result.Value</p>
+            <p style="text-align:center">The result is: @Model.Result.Value</p>
         }
 
         @*Input your operation : <input class="form-control" type="text" id="NumberA" name="NumberA"><input type"text" id="oper" size="1"><input type="text" id="val2">*@
         <br>
         <label id="label1"></label>
-        <input type="submit" value="Calculate" />
+        <input type="submit" style="float:left" class="btn btn-info" value="Calculate" />
     </div>
 }
 
