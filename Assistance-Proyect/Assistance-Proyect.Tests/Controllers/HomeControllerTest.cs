@@ -50,5 +50,17 @@ namespace Assistance_Proyect.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
+
+        [TestMethod]
+        public void CalcViewSumaTest(HomeController.CalcViewModel data)
+        {
+            HomeController c = new HomeController();
+            data.NumberA = 5;
+            data.NumberB = 8;
+            var res = data.Result;
+
+            Assert.AreEqual(13, res);
+            
+        }
     }
 }
